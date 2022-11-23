@@ -8,15 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
-    public function user_id() {
-        return $this->belongsTo(User::class);
-    }
-    public function post_id() {
-        return $this->hasMany(Comment::class);
-    }
+
     protected $fillable = [
         'text',
         'title',
         'user_id',
     ];
+
+    public function user()
+    {
+        $this->belongsTo(User::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }
