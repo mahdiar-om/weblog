@@ -19,7 +19,7 @@ class User extends Authenticatable
      */
     public function id() {
         return ([
-            $this->hasMany(Weblog::class),
+            $this->hasMany(Post::class),
             $this->hasMany(Comment::class),
         ]);
     }

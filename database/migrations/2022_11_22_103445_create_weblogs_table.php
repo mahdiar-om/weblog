@@ -13,7 +13,7 @@ class CreateWeblogsTable extends Migration
      */
     public function up()
     {
-        Schema::create('weblogs', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->string('text');

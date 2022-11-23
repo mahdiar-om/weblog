@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
-use App\Models\Weblog;
+use App\Models\Post;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,7 +10,7 @@ class WeblogController extends Controller
 {
     public function index(){
         return view('weblog.index' , [
-            'weblogs' => Weblog::all(),
+            'weblogs' => Post::all(),
             'comments' => Comment::all()
         ]);
     }
@@ -20,10 +20,10 @@ class WeblogController extends Controller
     }
 
     public function store(Request $request){
-        Weblog::query()->create([
+        Post::query()->create([
             'user_id' => auth::id(),
             'text' => $request->get('text'),
-            'title' => $request->get('title') 
+            'title' => $request->get('title')
         ]);
         return redirect(route("post_create"))->with('message' , 'new task add');
     }
@@ -44,7 +44,7 @@ class WeblogController extends Controller
         ->where('verification' , true);
         return 'hi';
     }
-    
-    
-}    
+
+
+}
 

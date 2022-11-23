@@ -12,9 +12,9 @@ class Comment extends Model
         return $this->belongsTo(User::class);
     }
     public function post_id() {
-        return $this->belongsTo(Weblog::class);
+        return $this->belongsTo(Post::class);
     }
-    
+
     protected $fillable = [
         'comment',
         'verification',
