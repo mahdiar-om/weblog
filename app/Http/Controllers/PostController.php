@@ -6,7 +6,7 @@ use App\Models\Post;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-class WeblogController extends Controller
+class PostController extends Controller
 {
     public function index(){
         return view('weblog.index' , [

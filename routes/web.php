@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\WeblogController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use Monolog\Processor\WebProcessor;
 
@@ -27,10 +27,10 @@ Route::prefix('login')->group(function(){
     Route::post('/' , [UserController::class , "authenticate"])->name('authenticate');
 });
 Route::prefix('weblog')->group(function(){
-    Route::get('/' , [WeblogController::class , "index"])->name("weblog_main_page");
-    Route::post('/' , [WeblogController::class , "leave_comment"])->name("leave_comment");
-    Route::post('/comment', [WeblogController::class , "view_comments"])->name("view_comments");
-    Route::get('/post' , [WeblogController::class , "create"])->name("post_create");
-    Route::post('/post' , [WeblogController::class , "store"])->name("post_store");
-    
+    Route::get('/' , [PostController::class , "index"])->name("weblog_main_page");
+    Route::post('/' , [PostController::class , "leave_comment"])->name("leave_comment");
+    Route::post('/comment', [PostController::class , "view_comments"])->name("view_comments");
+    Route::get('/post' , [PostController::class , "create"])->name("post_create");
+    Route::post('/post' , [PostController::class , "store"])->name("post_store");
+
 });
