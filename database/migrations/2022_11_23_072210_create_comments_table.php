@@ -20,7 +20,7 @@ class CreateCommentsTable extends Migration
             $table->foreignId('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreignId('post_id');
-            $table->foreign('post_id')->references('id')->on('weblogs');
+            $table->foreign('post_id')->references('id')->on('posts');
             $table->timestamps();
         });
     }
