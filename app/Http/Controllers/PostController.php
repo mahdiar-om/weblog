@@ -6,17 +6,23 @@ use App\Models\Post;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 class PostController extends Controller
 {
     public function index(){
-        return view('weblog.index' , [
-            'weblogs' => Post::all(),
-            'comments' => Comment::all()
+        return view('posts.index' , [
+            'posts' => Post::all()
         ]);
     }
 
     public function create () {
-        return view('weblog.create');
+        return view('posts.create');
+    }
+
+    public function show($id){
+        return view('posts.single' , [
+            'post' => Post::findOrFail($id)
+        ]);
     }
 
     public function store(Request $request){
@@ -25,26 +31,17 @@ class PostController extends Controller
             'text' => $request->get('text'),
             'title' => $request->get('title')
         ]);
-        return redirect(route("post_create"))->with('message' , 'new task add');
+        return redirect(route("posts.index"))->with('message' , 'new post added');
     }
 
-    public function leave_comment(Request $request) {
-        Comment::query()->create([
-            'user_id' => auth::id(),
-            'post_id' => $request->get('id'),
-            'comment' => $request->get('comment')
-        ]);
-        return redirect(route("weblog_main_page"))->with('message' , 'comment post');
+    public function update()
+    {
+        //TODO
     }
 
-    public function view_comments(Request $request) {
-        $input = $request->all();
-        $datas = Comment::all()
-        ->where('post_id' , $input['id'])
-        ->where('verification' , true);
-        return 'hi';
+    public function delete()
+    {
+        //TODO
     }
-
-
 }
 

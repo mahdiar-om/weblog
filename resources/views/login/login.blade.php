@@ -19,7 +19,7 @@
         <div class="row">
             <div class="col">
 
-                <form  method="POST" action = {{route('authenticate')}}>
+                <form  method="POST" action = {{route('login')}}>
                     @csrf
 
                     <div class="mb-3">
@@ -33,7 +33,7 @@
                     <button type="submit">Click here to login</button>
                 </form>
 
-                <li><a href="login/sign_up">click to sign up</a></li>
+                <li><a href="{{route('sign-up-page')}}">click to sign up</a></li>
             </div>
         </div>
     </div>

@@ -20,17 +20,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('login')->group(function(){
-    Route::get('/' , [UserController::class , "index"])->name("login_page");
-    Route::get('/sign_up' , [UserController::class , "create_account"])->name("sign_up");
-    Route::post('/sign_up' , [UserController::class , "store_account"])->name("user_sign_up");
-    Route::post('/' , [UserController::class , "authenticate"])->name('authenticate');
-});
-Route::prefix('weblog')->group(function(){
-    Route::get('/' , [PostController::class , "index"])->name("weblog_main_page");
-    Route::post('/' , [PostController::class , "leave_comment"])->name("leave_comment");
-    Route::post('/comment', [PostController::class , "view_comments"])->name("view_comments");
-    Route::get('/post' , [PostController::class , "create"])->name("post_create");
-    Route::post('/post' , [PostController::class , "store"])->name("post_store");
+Route::get('/login' ,       [UserController::class , "loginPage"])->name("login-page");
+Route::post('/login' ,      [UserController::class , "login"])->name('login');
 
+Route::get('/sign-up' ,     [UserController::class , "signupPage"])->name("sign-up-page");
+Route::post('/sign-up' ,    [UserController::class , "signup"])->name("sign-up");
+
+
+Route::prefix('posts')->name('posts.')->group(function(){
+    Route::get('/' ,        [PostController::class , "index"])->name('index');
+    Route::get('/create' ,  [PostController::class , "create"])->name('create');
+    Route::post('/create' , [PostController::class , "store"])->name('store');
+    Route::get('/{id}' ,    [PostController::class , "show"])->name('show');
 });

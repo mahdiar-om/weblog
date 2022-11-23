@@ -6,8 +6,22 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
-    public function authenticate(Request $request)
-    {   
+    public function logout(Request $request) {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
+    }
+
+    public function loginPage() {
+        return view('login.login');
+    }
+
+    public function login(Request $request)
+    {
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
@@ -15,37 +29,23 @@ class UserController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect(route("weblog_main_page"))->with('message' , 'welcome to your account');
+            return redirect(route("posts.index"))->with('message' , 'welcome to your account');
         }
         return 'account not found';
     }
-    
-    public function logout(Request $request) {
-        Auth::logout();
-        
-        $request->session()->invalidate();
-    
-        $request->session()->regenerateToken();
-    
-        return redirect('/');
-    }
 
-    public function index() {
-        return view('login.login');
-    }
-
-    public function create_account() {
+    public function signupPage() {
         return view('login.sign_up');
     }
 
-    public function store_account(Request $request) {
+    public function signup(Request $request) {
         $data = $request->all();
         User::query()->create([
             "name" => $data['name'],
             "email" => $data['email'],
             "password" => bcrypt($data['password'])
         ]);
-        return redirect(route("login_page"))->with("message" , "sing up sucssecfully");
+        return redirect(route("login-page"))->with("message" , "sing up sucssecfully");
     }
-}    
+}
 

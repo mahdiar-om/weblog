@@ -11,8 +11,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 </head>
 <body>
-    
-    <form method = "POST" action = {{route('post_store')}}>
+
+    <form method = "POST" action = {{route('posts.store')}}>
         @CSRF
         <input type="text" placeholder="Title" name="title">
         <input type="text" placeholder="Text" name="text">
