@@ -17,7 +17,8 @@ class UserController extends Controller
     }
 
     public function loginPage() {
-        return view('login.login');
+        $state = 'login';
+        return view('login.login')->with($state);
     }
 
     public function login(Request $request)
