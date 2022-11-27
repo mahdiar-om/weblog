@@ -45,7 +45,7 @@ class UserController extends Controller
             "email" => $data['email'],
             "password" => bcrypt($data['password'])
         ]);
-        return redirect(route("login-page"))->with("message" , "sing up sucssecfully");
+        return redirect(route("posts.index"))->with("message" , "sing up sucssecfully");
     }
 }
 
