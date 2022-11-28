@@ -22,6 +22,7 @@ Route::get('/', function () {
 
 Route::get('/login' ,       [UserController::class , "loginPage"])->name("login-page");
 Route::post('/login' ,      [UserController::class , "login"])->name('login');
+Route::get('/logout',       [UserController::class , "logout"])->name('logout');
 
 Route::get('/sign-up' ,     [UserController::class , "signupPage"])->name("sign-up-page");
 Route::post('/sign-up' ,    [UserController::class , "signup"])->name("sign-up");

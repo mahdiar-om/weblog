@@ -27,7 +27,7 @@
               </li>
             </ul>
             <span class="navbar-text">
-                <a href="#">Log out</a>
+                <a href={{route('logout')}}>Log out</a>
             </span>
           </div>
         </div>
