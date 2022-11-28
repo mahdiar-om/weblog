@@ -32,7 +32,7 @@
                   <form action="{{route('posts.store')}}" method="POST">  
                     @csrf 
                     <input type="text" value="{{$post->id}}" name = "id" hidden>
-                    <li><a href="" class="small text-muted mb-0">View all comment</a></li>
+                    <li><a href="posts/{{$post->id}}" class="small text-muted mb-0">View all comment</a></li>
                   </form>
 
                 </div>
