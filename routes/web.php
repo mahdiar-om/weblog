@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
@@ -34,3 +35,10 @@ Route::prefix('posts')->name('posts.')->group(function(){
     Route::post('/create' , [PostController::class , "store"])->name('store');
     Route::get('/{id}' ,    [PostController::class , "show"])->name('show');
 });
+
+Route::prefix('comment')->name('comment.')->group(function(){
+    Route::get('/create/{id}' ,  [CommentController::class , "create"])->name('create');
+    Route::post('/store' ,   [CommentController::class , "store"])->name('store');
+
+});
+
