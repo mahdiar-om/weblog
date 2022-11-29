@@ -43,3 +43,7 @@ Route::prefix('comment')->middleware('auth')->name('comment.')->group(function()
     Route::post('/post-comment' , [CommentController::class , "verification"])->name('verification');
 });
 
+Route::prefix('category')->middleware('auth')->name('category.')->group(function(){
+    Route::get('/create' ,        [PostController::class , "create"])->name('create');
+    Route::post('/create' ,       [PostController::class , "store"])->name('store');
+});
