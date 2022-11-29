@@ -29,17 +29,17 @@ Route::get('/sign-up' ,     [UserController::class , "signupPage"])->name("sign-
 Route::post('/sign-up' ,    [UserController::class , "signup"])->name("sign-up");
 
 
-Route::prefix('posts')->name('posts.')->group(function(){
-    Route::get('/' ,        [PostController::class , "index"])->name('index');
-    Route::get('/create' ,  [PostController::class , "create"])->name('create');
-    Route::post('/create' , [PostController::class , "store"])->name('store');
-    Route::get('/{id}' ,    [PostController::class , "show"])->name('show');
+Route::get('/posts' ,             [PostController::class , "index"])->name('posts.index');
+Route::prefix('posts')->middleware('auth')->name('posts.')->group(function(){
+    Route::get('/create' ,        [PostController::class , "create"])->name('create');
+    Route::post('/create' ,       [PostController::class , "store"])->name('store');
+    Route::get('/{id}' ,          [PostController::class , "show"])->name('show');
 });
 
-Route::prefix('comment')->name('comment.')->group(function(){
-    Route::get('/create/{id}' ,  [CommentController::class , "create"])->name('create');
-    Route::post('/store' ,   [CommentController::class , "store"])->name('store');
-    Route::get('/post-comment' , [CommentController::class , "verificationPage"])->name('verification-Page');
+Route::prefix('comment')->middleware('auth')->name('comment.')->group(function(){
+    Route::get('/create/{id}' ,   [CommentController::class , "create"])->name('create');
+    Route::post('/store' ,        [CommentController::class , "store"])->name('store');
+    Route::get('/post-comment' ,  [CommentController::class , "verificationPage"])->name('verification-Page');
     Route::post('/post-comment' , [CommentController::class , "verification"])->name('verification');
 });
 
