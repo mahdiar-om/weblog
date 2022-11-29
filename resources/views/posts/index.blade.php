@@ -11,17 +11,19 @@
   
 </body>
 </html>
+<nav>
   @extends('templates.app')
-    @section('content')
+</nav>
       @extends('templates.post')
           
       @section('posts')
+        <li><a href = "{{route('posts.create')}}" class="btn btn-larg bg-success mt-2 mb-3">Add Post</a></li>
         @foreach ($posts as $post)
           
           <div class="card mb-4">
             <div class="card-body">
-              <p>{{$post['text']}}</p>
-
+              <p class="text-small ms-2">{{$post['text']}}</p>
+              <h3 class="ms-4 ">{{$post['title']}}</h3>
               <div class="d-flex justify-content-between">
                 <div class="d-flex flex-row align-items-center">
                   <p class="small mb-0 ms-2">{{$post['name']}}</p>
@@ -42,4 +44,3 @@
 
           @endforeach
       @endsection
-    @endsection

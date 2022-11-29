@@ -29,7 +29,7 @@ class PostController extends Controller
         Post::query()->create([
             'user_id' => auth::id(),
             'text' => $request->get('text'),
-            'title' => 'test mikonam'
+            'title' => $request->get('title')
         ]);
         return redirect(route("posts.index"))->with('message' , 'new post added');
     }

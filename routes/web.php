@@ -39,6 +39,7 @@ Route::prefix('posts')->name('posts.')->group(function(){
 Route::prefix('comment')->name('comment.')->group(function(){
     Route::get('/create/{id}' ,  [CommentController::class , "create"])->name('create');
     Route::post('/store' ,   [CommentController::class , "store"])->name('store');
-
+    Route::get('/post-comment' , [CommentController::class , "verificationPage"])->name('verification-Page');
+    Route::post('/post-comment' , [CommentController::class , "verification"])->name('verification');
 });
 

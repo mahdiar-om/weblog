@@ -23,9 +23,18 @@ class CommentController extends Controller
         return redirect(route("posts.index"))->with('message' , 'new post added');
     }
 
-    /*public function show($id){
-        return view('posts.single' , [
-            'post' => Post::findOrFail($id)
-        ]);
-    }*/
+    public function verificationPage() {
+        $querys = Post::all()->where('user_id' , auth::id());
+        foreach($querys as $query) {
+            $data = Comment::all()->where('post_id' , $query['id']);
+        }
+        return $data;
+    }
+    
+    public function verification(Request $request) {
+        $input = $request->all();
+        Comment::where('id', $input['id'])
+        ->update(['verification' => !$input['']]);
+
+    }
 }

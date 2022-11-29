@@ -13,7 +13,7 @@ class UserController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/posts');
+        return redirect('/login');
     }
 
     public function loginPage() {

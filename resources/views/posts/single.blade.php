@@ -9,11 +9,11 @@
             <p>{{$comment->user->name}}:</p>
             <div class="card mb-4">
                 <div class="card-body">
-                  <p>{{$comment->comment}}</p>
+                  <p><h3>{{$comment->comment}}</h3></p>
     
                   <div class="d-flex justify-content-between">
                     <div class="d-flex flex-row align-items-center">
-                      <p class="small mb-0 ms-2">{{$comment->user->name}}</p>
+                      <p class="small me-2 mb-0 ms-2 fw-light position-absolute bottom-0 end-0">{{$comment->user->created_at}}</p>
                     </div>
                   </div>
                 </div>

@@ -23,7 +23,7 @@
                 <a class="nav-link active" aria-current="page" href={{route('posts.index')}}>Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="#">Your post comments</a>
+                <a class="nav-link " href={{route('comment.verification-Page')}}>Your post comments</a>
               </li>
             </ul>
             <span class="navbar-text">
