@@ -35,6 +35,11 @@ class PostController extends Controller
         return redirect(route("posts.index"));
     }
 
+    public function userPost() {
+        return view('posts.user_post' , [
+            'posts' => Post::all()->where('user_id' , auth::id())
+        ]);
+    }
     public function update()
     {
         //TODO
