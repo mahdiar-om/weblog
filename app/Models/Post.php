@@ -13,11 +13,12 @@ class Post extends Model
         'text',
         'title',
         'user_id',
+        'category_id',
     ];
 
     public function user()
     {
-        $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function comments()
@@ -27,6 +28,6 @@ class Post extends Model
 
     public function category()
     {
-         $this->bleongsTo(Category::class);
+        return $this->bleongsTo(Category::class);
     }
 }

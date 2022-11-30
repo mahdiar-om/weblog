@@ -19,7 +19,7 @@
       @section('posts')
         <li><a href = "{{route('posts.create')}}" class="btn btn-larg bg-success mt-2 mb-3">Add Post</a></li>
         @foreach ($posts as $post)
-          
+        <p>{{$post->user->name}}:</p>
           <div class="card mb-4">
             <div class="card-body">
               <p class="text-small ms-2">{{$post['text']}}</p>

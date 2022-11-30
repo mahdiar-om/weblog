@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use Monolog\Processor\WebProcessor;
 
@@ -44,6 +46,6 @@ Route::prefix('comment')->middleware('auth')->name('comment.')->group(function()
 });
 
 Route::prefix('category')->middleware('auth')->name('category.')->group(function(){
-    Route::get('/create' ,        [PostController::class , "create"])->name('create');
-    Route::post('/create' ,       [PostController::class , "store"])->name('store');
+    Route::get('/create' ,        [CategoryController::class , "create"])->name('create');
+    Route::post('/create' ,       [CategoryController::class , "store"])->name('store');
 });

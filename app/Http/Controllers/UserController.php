@@ -29,7 +29,7 @@ class UserController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect(route("posts.index"))->with('message' , 'welcome to your account');
+            return redirect(route("posts.index"));
         }
         return 'account not found';
     }
@@ -45,7 +45,7 @@ class UserController extends Controller
             "email" => $data['email'],
             "password" => bcrypt($data['password'])
         ]);
-        return redirect(route("posts.index"))->with("message" , "sing up sucssecfully");
+        return redirect(route("posts.index"));
     }
 }
 

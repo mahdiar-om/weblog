@@ -20,7 +20,7 @@ class CommentController extends Controller
             'post_id' => $request->get('id'),
             'comment' => $request->get('comment'),
         ]);
-        return redirect(route("posts.index"))->with('message' , 'new post added');
+        return redirect(route("posts.index"));
     }
 
     public function verificationPage() {

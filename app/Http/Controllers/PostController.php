@@ -28,10 +28,11 @@ class PostController extends Controller
     public function store(Request $request){
         Post::query()->create([
             'user_id' => auth::id(),
+            'category_id' => 1,
             'text' => $request->get('text'),
             'title' => $request->get('title')
         ]);
-        return redirect(route("posts.index"))->with('message' , 'new post added');
+        return redirect(route("posts.index"));
     }
 
     public function update()
