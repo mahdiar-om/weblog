@@ -19,9 +19,7 @@ use Monolog\Processor\WebProcessor;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Route::get('/login' ,       [UserController::class , "loginPage"])->name("login-page");
 Route::post('/login' ,      [UserController::class , "login"])->name('login');
@@ -30,12 +28,19 @@ Route::get('/logout',       [UserController::class , "logout"])->name('logout');
 Route::get('/sign-up' ,     [UserController::class , "signupPage"])->name("sign-up-page");
 Route::post('/sign-up' ,    [UserController::class , "signup"])->name("sign-up");
 
+Route::get('/' ,            [PostController::class , "Home"])->name('Home');
 
-Route::get('/posts' ,             [PostController::class , "index"])->name('posts.index');
 Route::prefix('posts')->middleware('auth')->name('posts.')->group(function(){
-    Route::get('/create' ,        [PostController::class , "create"])->name('create');
-    Route::get('/user-posts' ,    [PostController::class , "userPost"])->name('user_post');
+    Route::get('/' ,             [PostController::class , "index"])->name('index');
+
+    Route::get('/create' ,        [PostController::class , "create"])->name('create');    
     Route::post('/create' ,       [PostController::class , "store"])->name('store');
+
+    Route::get('/user-posts' ,    [PostController::class , "userPost"])->name('user_post');
+
+    Route::get('/update/{id}' ,   [PostController::class , "updatePage"])->name('update_page');    
+    Route::post('/update/{id}' ,  [PostController::class , "update"])->name('update');
+
     Route::get('/{id}' ,          [PostController::class , "show"])->name('show');
 
 });
@@ -43,8 +48,8 @@ Route::prefix('posts')->middleware('auth')->name('posts.')->group(function(){
 Route::prefix('comment')->middleware('auth')->name('comment.')->group(function(){
     Route::get('/create/{id}' ,   [CommentController::class , "create"])->name('create');
     Route::post('/store' ,        [CommentController::class , "store"])->name('store');
-    Route::get('/post-comment' ,  [CommentController::class , "verificationPage"])->name('verification-Page');
-    Route::post('/post-comment' , [CommentController::class , "verification"])->name('verification');
+    Route::get('/verification/{id}' ,  [CommentController::class , "verificationPage"])->name('verification-Page');
+    Route::post('/verification/{id}' , [CommentController::class , "verification"])->name('verification');
 
 });
 

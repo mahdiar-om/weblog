@@ -1,10 +1,9 @@
 
-@extends('templates.app')
 @extends('templates.post')
 
 @section('posts')
-<h2 class = "ms-1">{{$post->title}}</h2>
-<h6 class = "ms-1">{{$post->text}}</h6><br>
+  <h2 class = "ms-1">{{$post->title}}</h2>
+  <h6 class = "ms-1">{{$post->text}}</h6><br>
         @foreach($post->comments as $comment)
             <p>{{$comment->user->name}}:</p>
             <div class="card mb-4">

@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
+    public function Home(){
+        return view('welcome' , [
+            'posts' => Post::all()
+        ]);
+    }
+
     public function index(){
         return view('posts.index' , [
             'posts' => Post::all()
@@ -32,7 +38,7 @@ class PostController extends Controller
             'text' => $request->get('text'),
             'title' => $request->get('title')
         ]);
-        return redirect(route("posts.index"));
+        return redirect(route("Home"));
     }
 
     public function userPost() {
@@ -40,14 +46,17 @@ class PostController extends Controller
             'posts' => Post::all()->where('user_id' , auth::id())
         ]);
     }
-    public function update()
-    {
-        //TODO
-    }
-
-    public function delete()
-    {
-        //TODO
-    }
+    public function updatePage($id) {
+      
+    } 
+    public function update(Request $request) {
+        $input = $request->all();
+        post::where('id', $input['id'])
+        ->update(['text' => $input['text']])
+        ->update(['title' => $input['title']])
+        ->update(['category_id' => $input['category_id']]);
+    }  
 }
+
+
 

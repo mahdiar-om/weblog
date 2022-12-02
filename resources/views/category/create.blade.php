@@ -13,7 +13,10 @@
                 <h5>Add a category</h5>
                   {{-- comment --}}
                   <form action="{{route('category.store')}}" method="post">
+                    @csrf
+
                     <div class="dropdown show ">
+                      
                       <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Dropdown link
                       </a>
@@ -24,7 +27,15 @@
                         <a class="dropdown-item" href="#">Something else here</a>
                       </div>
                     </div>
-                    @csrf
+                    <label for="cars">Choose a car:</label>
+
+<select name="cars" id="cars">
+  <option value="volvo">peraid</option>
+  <option value="saab">Saab</option>
+  <option value="mercedes">Mercedes</option>
+  <option value="audi">Audi</option>
+</select>
+
                     <input type="text" name = "category">
                     <div class="d-flex justify-content-between mt-3">
                       <button class="btn btn-success btn-lg active" type="submit " aria-pressed="true"> Add </button>

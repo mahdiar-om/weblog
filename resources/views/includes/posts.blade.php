@@ -1,22 +1,8 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
-  
-</body>
-</html>
-<nav>
-  @extends('templates.app')
-</nav>
       @extends('templates.post')
           
-      @section('posts')
+      @section('content')
+        <li><a href = "{{route('posts.create')}}" class="btn btn-larg bg-success mt-2 mb-3">Add Post</a></li>
         @foreach ($posts as $post)
         <p>{{$post->user->name}}:</p>
           <div class="card mb-4">
@@ -28,12 +14,12 @@
                   <p class="small mb-0 ms-2">{{$post['name']}}</p>
                 </div>
                 <div class="d-flex flex-row align-items-center">
-                    <li><a href = '' class="small text-muted mb-0">update</a></li>
+                    <li><a href = {{route('comment.create' , ['id' => $post->id])}} class="small text-muted mb-0">Comment</a></li>
                   <i class="far fa-thumbs-up mx-2 fa-xs text-black" style="margin-top: -0.16rem;"></i>
                   <form action="{{route('posts.store')}}" method="POST">  
                     @csrf 
                     <input type="text" value="{{$post->id}}" name = "id" hidden>
-                    <li><a href=  ''  class="small text-muted mb-0">Verification comment</a></li>
+                    <li><a href="posts/{{$post->id}}" class="small text-muted mb-0">View all comment</a></li>
                   </form>
 
                 </div>

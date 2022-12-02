@@ -20,21 +20,17 @@ class CommentController extends Controller
             'post_id' => $request->get('id'),
             'comment' => $request->get('comment'),
         ]);
-        return redirect(route("posts.index"));
+        return redirect(route("Home"));
     }
 
-    // public function verificationPage() {
-    //     $querys = Post::all()->where('user_id' , auth::id());
-    //     foreach($querys as $query) {
-    //         $data = Comment::all()->where('post_id' , $query['id']);
-    //     }
-    //     return $data;
-    // }
+    public function verificationPage($id) {
+        
+    }
     
-    // public function verification(Request $request) {
-    //     $input = $request->all();
-    //     Comment::where('id', $input['id'])
-    //     ->update(['verification' => !$input['']]);
+    public function verification(Request $request) {
+        $input = $request->all();
+        Comment::where('id', $input['id'])
+        ->update(['verification' => !$input['']]);
 
-    // }
+    }
 }

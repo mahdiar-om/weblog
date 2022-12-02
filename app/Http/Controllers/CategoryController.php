@@ -21,7 +21,7 @@ class CategoryController extends Controller
             'post_id' => $request->get('id'),
             'comment' => $request->get('comment'),
         ]);
-        return redirect(route("posts.index"));
+        return redirect(route("Home"));
     }
 
     
