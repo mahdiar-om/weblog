@@ -16,12 +16,7 @@
                 <div class="d-flex flex-row align-items-center">
                     <li><a href = {{route('comment.create' , ['id' => $post->id])}} class="small text-muted mb-0">Comment</a></li>
                   <i class="far fa-thumbs-up mx-2 fa-xs text-black" style="margin-top: -0.16rem;"></i>
-                  <form action="{{route('posts.store')}}" method="POST">  
-                    @csrf 
-                    <input type="text" value="{{$post->id}}" name = "id" hidden>
-                    <li><a href="posts/{{$post->id}}" class="small text-muted mb-0">View all comment</a></li>
-                  </form>
-
+                    <li><a href= {{route('posts.comments' , ['id' => $post->id])}}  class="small text-muted mb-0">View all comment</a></li>
                 </div>
               </div>
             </div>

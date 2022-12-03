@@ -15,14 +15,15 @@ class PostController extends Controller
         ]);
     }
 
-    public function index(){
-        return view('posts.index' , [
-            'posts' => Post::all()
-        ]);
-    }
 
     public function create () {
         return view('posts.create');
+    }
+    public function comments($id){
+        return view('posts.comments' , [
+            'comments' => comment::all()->where('post_id' , $id)->sortByDesc('created_at'),   //->sortByDesc('create_at'),
+            'post' => post::findOrFail($id)
+        ]);
     }
 
     public function show($id){
@@ -43,7 +44,7 @@ class PostController extends Controller
 
     public function userPost() {
         return view('posts.user_post' , [
-            'posts' => Post::all()->where('user_id' , auth::id())
+            'posts' => Post::all()->where('user_id' , auth::id())->sortByDesc('created_at'),
         ]);
     }
     public function updatePage($id) {

@@ -11,7 +11,10 @@ use Illuminate\Support\Facades\Auth;
 class CommentController extends Controller
 {
     public function create ($id) {
-        return view('comment.create')->with('id' , $id);
+        return view('comment.create' , [
+            'id' => $id,
+            'post' => post::findOrFail($id)
+        ]);
     }
 
     public function store(Request $request){

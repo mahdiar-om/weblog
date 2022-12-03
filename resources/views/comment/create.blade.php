@@ -14,6 +14,6 @@
   @endsection
 
   @section('content')
-    @include('includes.comment')
+    @include('includes.create_comment')
   @endsection
 

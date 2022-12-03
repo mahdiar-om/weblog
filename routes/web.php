@@ -31,10 +31,12 @@ Route::post('/sign-up' ,    [UserController::class , "signup"])->name("sign-up")
 Route::get('/' ,            [PostController::class , "Home"])->name('Home');
 
 Route::prefix('posts')->middleware('auth')->name('posts.')->group(function(){
-    Route::get('/' ,             [PostController::class , "index"])->name('index');
+
 
     Route::get('/create' ,        [PostController::class , "create"])->name('create');    
     Route::post('/create' ,       [PostController::class , "store"])->name('store');
+
+    Route::get('/comments/{id}' , [PostController::class , "comments"])->name('comments');
 
     Route::get('/user-posts' ,    [PostController::class , "userPost"])->name('user_post');
 
@@ -46,6 +48,8 @@ Route::prefix('posts')->middleware('auth')->name('posts.')->group(function(){
 });
 
 Route::prefix('comment')->middleware('auth')->name('comment.')->group(function(){
+    
+    
     Route::get('/create/{id}' ,   [CommentController::class , "create"])->name('create');
     Route::post('/store' ,        [CommentController::class , "store"])->name('store');
     Route::get('/verification/{id}' ,  [CommentController::class , "verificationPage"])->name('verification-Page');
