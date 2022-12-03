@@ -1,24 +1,15 @@
-
       @extends('templates.post')
           
       @section('content')
-        <a href = "" class="btn btn-larg bg-success mt-2 mb-3">Post comments</a>
-        @foreach ($comments as $comment)
-        <p>{{$comment->user->name}}:</p>
-          <div class="card mb-4">
-            <div class="card-body">
-              <p class="text-small ms-2">{{$comment['comment']}}</p>
-              {{-- <h3 class="ms-4 ">{{$comment['title']}}</h3> --}}
-              <div class="d-flex justify-content-between">
-                <div class="d-flex flex-row align-items-center">
-                  {{-- <p class="small mb-0 ms-2">{{$post['name']}}</p> --}}
-                </div>
-                <div class="d-flex flex-row align-items-center">
-
-                </div>
-              </div>
-            </div>
-          </div>
-
-          @endforeach
+        <label class="btn btn-larg bg-success mt-2 mb-3">Create your categorys</label><br>
+        <form action="{{route('category.store')}}" method="POST">
+            @csrf
+            <input name = "category" type="text" class = "me-4" placeholder="new category">
+            <select name="category_parent">
+                @foreach ($categories as $category)
+                <option class=" dropdown-toggle" >{{$category->category}}</option>
+                @endforeach
+            </select>
+            <button type="submit"> Add</button>
+        </form>
       @endsection

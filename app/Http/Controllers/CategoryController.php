@@ -12,14 +12,18 @@ use Illuminate\Support\Facades\Auth;
 class CategoryController extends Controller
 {
     public function create () {
-        return view('category.create');
+
+        return view('category.create' ,[
+            'categories' => Category::all()->sortByDesc('parent_id'), 
+        ]);
     }
 
     public function store(Request $request){
-        comment::query()->create([
-            'user_id' => auth::id(),
-            'post_id' => $request->get('id'),
-            'comment' => $request->get('comment'),
+        $selectd =  $request->get('category_parent');
+
+        Category::query()->create([
+            'category_partent' => $selectd,
+            'category' => $request->get('category'),
         ]);
         return redirect(route("Home"));
     }

@@ -1,4 +1,4 @@
-@extends('templates.app')
+{{-- @extends('templates.app')
 <section style="background-color: #dede1c;">
   <div class="container my-5 py-5 text-dark">
     <div class="row d-flex justify-content-center">
@@ -11,7 +11,6 @@
                 height="65" />
               <div class="w-100">
                 <h5>Add a category</h5>
-                  {{-- comment --}}
                   <form action="{{route('category.store')}}" method="post">
                     @csrf
 
@@ -28,14 +27,6 @@
                       </div>
                     </div>
                     <label for="cars">Choose a car:</label>
-
-<select name="cars" id="cars">
-  <option value="volvo">peraid</option>
-  <option value="saab">Saab</option>
-  <option value="mercedes">Mercedes</option>
-  <option value="audi">Audi</option>
-</select>
-
                     <input type="text" name = "category">
                     <div class="d-flex justify-content-between mt-3">
                       <button class="btn btn-success btn-lg active" type="submit " aria-pressed="true"> Add </button>
@@ -51,4 +42,23 @@
       </div>
     </div>
   </div>
-</section>
+</section> --}}
+@extends('templates.app')
+  @auth
+    @section('nav_content')
+        @include('includes.navbar')
+    @endsection
+
+    @section('state')
+        log out
+    @endsection
+  @endauth
+
+  @section('state')
+      log in
+  @endsection
+
+  @section('content')
+    @include('includes.create_category')
+  @endsection
+
