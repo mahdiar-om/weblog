@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Category;
 use App\Models\User;
 use App\Models\Post;
 use App\Models\Comment;
@@ -15,10 +17,6 @@ class PostController extends Controller
         ]);
     }
 
-
-    public function create () {
-        return view('posts.create');
-    }
     public function comments($id){
         return view('posts.comments' , [
             'comments' => comment::all()->where('post_id' , $id)->sortByDesc('created_at'),   //->sortByDesc('create_at'),
@@ -32,10 +30,16 @@ class PostController extends Controller
         ]);
     }
 
+    public function create () {
+        return view('posts.create' , [
+            'categories' => Category::all()
+        ]);
+    }
+
     public function store(Request $request){
         Post::query()->create([
             'user_id' => auth::id(),
-            'category_id' => 1,
+            'category_id' => $request->get('category_id'),
             'text' => $request->get('text'),
             'title' => $request->get('title')
         ]);

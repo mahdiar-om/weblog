@@ -19,10 +19,8 @@ class CategoryController extends Controller
     }
 
     public function store(Request $request){
-        $selectd =  $request->get('category_parent');
-
         Category::query()->create([
-            'category_partent' => $selectd,
+            'category_parent' => $request->get('category_id'),
             'category' => $request->get('category'),
         ]);
         return redirect(route("Home"));
