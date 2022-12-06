@@ -33,7 +33,7 @@ Route::get('/' ,            [PostController::class , "Home"])->name('Home');
 Route::prefix('posts')->middleware('auth')->name('posts.')->group(function(){
 
 
-    Route::get('/create' ,        [PostController::class , "create"])->name('create');    
+    Route::get('/create' ,        [PostController::class , "create"])->name('create');
     Route::post('/create' ,       [PostController::class , "store"])->name('store');
 
     Route::get('/comments/{id}' , [PostController::class , "comments"])->name('comments');
@@ -41,7 +41,7 @@ Route::prefix('posts')->middleware('auth')->name('posts.')->group(function(){
     Route::get('/login-user-posts' ,    [PostController::class , "loginUserPost"])->name('login_user_post');
     //Route::get('/user-posts/{id}' ,    [PostController::class , "userPost"])->name('user_post');
 
-   // Route::get('/update/{id}' ,   [PostController::class , "updatePage"])->name('update_page');    
+   // Route::get('/update/{id}' ,   [PostController::class , "updatePage"])->name('update_page');
     //Route::post('/update/{id}' ,  [PostController::class , "update"])->name('update');
 
     Route::get('/{id}' ,          [PostController::class , "show"])->name('show');
@@ -49,8 +49,8 @@ Route::prefix('posts')->middleware('auth')->name('posts.')->group(function(){
 });
 
 Route::prefix('comment')->middleware('auth')->name('comment.')->group(function(){
-    
-    
+
+
     Route::get('/create/{id}' ,   [CommentController::class , "create"])->name('create');
     Route::post('/store' ,        [CommentController::class , "store"])->name('store');
     Route::get('/verification/{id}' ,  [CommentController::class , "verificationPage"])->name('verification_Page');
@@ -63,3 +63,23 @@ Route::prefix('category')->middleware('auth')->name('category.')->group(function
     Route::post('/create' ,       [CategoryController::class , "store"])->name('store');
     Route::get('/show/{id}' ,     [CategoryController::class , "show"])->name('show');
 });
+
+
+/*
+ * / -> home
+ * /login -> login
+ * /register -> register
+ *
+ * /post/ -> show all posts
+ * /post/{id} -> show a specific post
+ *
+ *
+ * /category/
+ * /category/{id} -> specific category's posts
+ *
+ *
+ * /dashboard/
+ *              /category -> add a new category
+ *              /post     -> get -> show all posts | post -> add a new post
+ *
+ */

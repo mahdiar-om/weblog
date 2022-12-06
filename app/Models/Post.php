@@ -28,6 +28,6 @@ class Post extends Model
 
     public function category()
     {
-        return $this->bleongsTo(Category::class);
+        return $this->belongsTo(Category::class);
     }
 }
