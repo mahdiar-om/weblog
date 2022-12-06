@@ -5,7 +5,7 @@
         <a href = "{{route('posts.create')}}" class="btn btn-larg bg-success mt-2 mb-3">Add Post</a>
         <a href = {{route('category.create')}} class="btn btn-larg bg-success ms-5 mt-2 mb-3">Add category</a><br>
         @foreach ($posts as $post)
-        <li><a href="#" class="link-dark" style= "text-decoration: none">{{$post->user->name}}</a></li>
+        <li><a href='#' class="link-dark" style= "text-decoration: none">{{$post->user->name}}</a></li>
           <div class="card mb-4">
             <div class="card-body">
               <p class="text-small ms-2">Title : {{$post['title']}}</p>

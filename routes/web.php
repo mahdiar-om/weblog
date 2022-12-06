@@ -39,10 +39,10 @@ Route::prefix('posts')->middleware('auth')->name('posts.')->group(function(){
     Route::get('/comments/{id}' , [PostController::class , "comments"])->name('comments');
 
     Route::get('/login-user-posts' ,    [PostController::class , "loginUserPost"])->name('login_user_post');
-    Route::get('/user-posts/{id}' ,    [PostController::class , "userPost"])->name('user_post');
+    //Route::get('/user-posts/{id}' ,    [PostController::class , "userPost"])->name('user_post');
 
-    Route::get('/update/{id}' ,   [PostController::class , "updatePage"])->name('update_page');    
-    Route::post('/update/{id}' ,  [PostController::class , "update"])->name('update');
+   // Route::get('/update/{id}' ,   [PostController::class , "updatePage"])->name('update_page');    
+    //Route::post('/update/{id}' ,  [PostController::class , "update"])->name('update');
 
     Route::get('/{id}' ,          [PostController::class , "show"])->name('show');
 

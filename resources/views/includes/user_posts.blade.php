@@ -14,7 +14,7 @@
                 </div>
                 <div class="d-flex flex-row align-items-center">
                   <i class="far fa-thumbs-up mx-2 fa-xs text-black" style="margin-top: -0.16rem;"></i>
-                    <li><a href= {{route('comment.verification' , ['id' => $post->id])}}  class="small text-muted mb-0">View all comment</a></li>
+                    <li><a href= {{route('posts.user_posts' , ['id' => $post->id])}}  class="small text-muted mb-0">View all comment</a></li>
                 </div>
               </div>
             </div>
