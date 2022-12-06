@@ -27,13 +27,17 @@ class CommentController extends Controller
     }
 
     public function verificationPage($id) {
-        
+    
+        return view('comment.verification' ,[
+            'comments' => comment::all()->where('post_id' , $id)->sortByDesc('created-at'),
+            'id' => $id,
+        ]);
     }
     
-    public function verification(Request $request) {
+    public function verification($id , Request $request) {
         $input = $request->all();
         Comment::where('id', $input['id'])
-        ->update(['verification' => !$input['']]);
-
+        ->update(['verification' => !$input['verification']]);
+        return redirect()->route('comment.verification', ['id' => $id]);
     }
 }

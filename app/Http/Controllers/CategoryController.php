@@ -25,6 +25,12 @@ class CategoryController extends Controller
         ]);
         return redirect(route("Home"));
     }
-
+    public function show($id) {
+        //return Post::all()->where('category_id' , $id);
+        return view('category.show' , [
+            'posts' => Post::all()->where('category_id' , $id),
+            'category' => category::findorfail($id)->category
+        ]);
+    }
     
 }

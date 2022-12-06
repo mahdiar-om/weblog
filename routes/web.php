@@ -38,7 +38,8 @@ Route::prefix('posts')->middleware('auth')->name('posts.')->group(function(){
 
     Route::get('/comments/{id}' , [PostController::class , "comments"])->name('comments');
 
-    Route::get('/user-posts' ,    [PostController::class , "userPost"])->name('user_post');
+    Route::get('/login-user-posts' ,    [PostController::class , "loginUserPost"])->name('login_user_post');
+    Route::get('/user-posts/{id}' ,    [PostController::class , "userPost"])->name('user_post');
 
     Route::get('/update/{id}' ,   [PostController::class , "updatePage"])->name('update_page');    
     Route::post('/update/{id}' ,  [PostController::class , "update"])->name('update');
@@ -52,7 +53,7 @@ Route::prefix('comment')->middleware('auth')->name('comment.')->group(function()
     
     Route::get('/create/{id}' ,   [CommentController::class , "create"])->name('create');
     Route::post('/store' ,        [CommentController::class , "store"])->name('store');
-    Route::get('/verification/{id}' ,  [CommentController::class , "verificationPage"])->name('verification-Page');
+    Route::get('/verification/{id}' ,  [CommentController::class , "verificationPage"])->name('verification_Page');
     Route::post('/verification/{id}' , [CommentController::class , "verification"])->name('verification');
 
 });
@@ -60,4 +61,5 @@ Route::prefix('comment')->middleware('auth')->name('comment.')->group(function()
 Route::prefix('category')->middleware('auth')->name('category.')->group(function(){
     Route::get('/create' ,        [CategoryController::class , "create"])->name('create');
     Route::post('/create' ,       [CategoryController::class , "store"])->name('store');
+    Route::get('/show/{id}' ,     [CategoryController::class , "show"])->name('show');
 });

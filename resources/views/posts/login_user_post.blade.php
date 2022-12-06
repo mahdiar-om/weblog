@@ -17,6 +17,6 @@
 
     @section('content')
         <div class="container">
-            @include('includes.user_posts')
+            @include('includes.login_user_posts')
         </div>
     @endsection

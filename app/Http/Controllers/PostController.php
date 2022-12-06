@@ -13,7 +13,8 @@ class PostController extends Controller
 {
     public function Home(){
         return view('welcome' , [
-            'posts' => Post::all()
+            'posts' => Post::all(),
+            'categories' => Category::all()
         ]);
     }
 
@@ -46,21 +47,20 @@ class PostController extends Controller
         return redirect(route("Home"));
     }
 
-    public function userPost() {
-        return view('posts.user_post' , [
+    public function loginUserPost() {
+        return view('posts.login_user_post' , [
             'posts' => Post::all()->where('user_id' , auth::id())->sortByDesc('created_at'),
+            'user' => auth::id(),
         ]);
     }
-    public function updatePage($id) {
-      
-    } 
-    public function update(Request $request) {
-        $input = $request->all();
-        post::where('id', $input['id'])
-        ->update(['text' => $input['text']])
-        ->update(['title' => $input['title']])
-        ->update(['category_id' => $input['category_id']]);
-    }  
+
+    public function userpost($id) {
+        return view('posts.user_post' ,[
+            'posts' => post::all()->where('user_id' , $id)->sortByDesc('created-at'),
+        ]);
+    }
+
+
 }
 
 

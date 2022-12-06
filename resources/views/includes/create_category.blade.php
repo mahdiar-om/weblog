@@ -1,7 +1,7 @@
       @extends('templates.post')
           
       @section('content')
-        <label class="btn btn-larg bg-info mt-2 mb-3">Create your categorys</label><br>
+        <label class="text-large mt-2 mb-3" >Create your categorys</label><br>
         <form action="{{route('category.store')}}" method="POST">
             @csrf
             <input name = "category" type="text" class = "me-4" placeholder="new category">
